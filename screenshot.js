@@ -10,7 +10,7 @@ module.exports = async function (url) {
 
         //TODO: Add URL validation and construct valid url    
         console.log('Launch browser');
-        browser = await chromium.launch();
+        browser = await chromium.launch( { args: ['--no-sandbox'] } );
 
         console.log('Create new page in browser');
         const page = await browser.newPage();
