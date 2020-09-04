@@ -1,0 +1,5 @@
+# Ignore all files in this dir...
+# We don't want to push the test results. At least no need for it now.
+*
+# ... except for this one.
+!.gitignore
