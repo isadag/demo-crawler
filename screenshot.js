@@ -1,13 +1,11 @@
 const { chromium } = require("playwright-chromium");
 
-module.exports = async function (url) {
+module.exports = async function (url, fullPageScreenshot) {
     let browser = null;
     const startTime = Date.now();
     console.log(url);
-    // url = "https://www.google.com"; // req.query.url
 
     try {
-
         //TODO: Add URL validation and construct valid url    
         console.log('Launch browser');
         browser = await chromium.launch( { args: ['--no-sandbox'] } );
@@ -19,7 +17,7 @@ module.exports = async function (url) {
         await page.goto(url);
 
         console.log('Grab screenshot');
-        const screenshotBuffer = await page.screenshot({ fullPage: true });
+        const screenshotBuffer = await page.screenshot({ fullPage: fullPageScreenshot });
 
         return screenshotBuffer;
     }
